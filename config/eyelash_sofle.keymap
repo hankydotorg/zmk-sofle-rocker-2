@@ -99,6 +99,27 @@
         bindings = <&kp BACKSPACE>, <&kp DELETE>;
     };
 
+    td_insert: td_insert {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_INSERT";
+        #binding-cells = <0>;
+        bindings = <&kp F9>, <&kp F10>, <&kp F11>;
+    };
+
+    td_trim: td_trim {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_TRIM";
+        #binding-cells = <0>;
+        bindings = <&kp T>, <&kp W>;
+    };
+
+    td_select_fw_bw: td_select_fw_bw {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_SELECT_FW_BW";
+        #binding-cells = <0>;
+        bindings = <&kp LA(Y)>, <&kp LG(Y)>;
+    };
+
     behaviors {
     };
 
@@ -118,9 +139,22 @@
             display-name = "QWERTY";
         };
 
+        layer_2 {
+            bindings = <
+&td_in_clear     &td_out_clear     &kp LG(EQUAL)  &kp LG(MINUS)           &kp LS(Z)     &kp M         &mmv MOVE_UP     &ht_mt K_MUTE C_VOL_DN  &ht_mt LS(S) C_VOL_UP  &ht_mt LS(Z) LG(MINUS)  &kp RG(EQUAL)  &trans         &tog 0
+&td_insert       &kp LA(F)         &kp LA(LG(L))  &kp N                   &kp A         &kp D         &mmv MOVE_DOWN   &kp BACKSPACE           &kp SEMI               &kp SPACE               &kp SQT        &kp RS(MINUS)  &kp RS(EQUAL)
+&td_trim         &td_select_fw_bw  &kp LGUI       &kp LSHIFT              &kp LEFT_ALT  &kp P         &mmv MOVE_LEFT   &kp RG(B)               &kp J                  &kp K                   &kp L          &kp RS(LBRC)   &kp RS(RBRC)
+&td_bkspace_del  &kp K_UNDO        &kp K_CUT      &ht_mt UP_ARROW K_COPY  &kp K_PASTE   &kp K_REDO    &mmv MOVE_RIGHT  &kp DELETE              &kp PG_UP              &kp UP_ARROW            &kp PG_DN      &trans         &mo 0
+&kp              &kp LEFT          &kp DOWN       &kp RIGHT               &kp J         &kp SPACE     &mkp LCLK        &kp RIGHT_GUI           &kp RSHIFT             &kp LEFT                &kp DOWN       &kp RIGHT
+            >;
+
+            sensor-bindings = <&scroll_encoder>;
+            label = "RESOLVE";
+        };
+
         layer_1 {
             bindings = <
-&trans      &trans  &trans  &trans  &trans  &trans    &mmv MOVE_UP     &kp BACKSPACE  &kp N7   &kp N8    &kp N9     &kp F10    &tog 2
+&trans      &trans  &trans  &trans  &trans  &trans    &mmv MOVE_UP     &kp BACKSPACE  &kp N7   &kp N8    &kp N9     &kp F10    &tog 0
 &trans      &trans  &trans  &trans  &trans  &trans    &mmv MOVE_DOWN   &kp ASTERISK   &kp N4   &kp N5    &kp N6     &kp MINUS  &kp LPAR
 &trans      &trans  &trans  &trans  &trans  &trans    &mmv MOVE_LEFT   &kp SLASH      &kp N1   &kp N2    &kp N3     &kp PLUS   &kp RPAR
 &trans      &trans  &trans  &trans  &trans  &trans    &mmv MOVE_RIGHT  &kp RGUI       &kp DOT  &kp UP    &kp PRCNT  &kp EQUAL  &kp RETURN
@@ -129,39 +163,6 @@
 
             display-name = "NUMPAD";
             sensor-bindings = <&scroll_encoder>;
-        };
-
-        layer_2 {
-            bindings = <
-&td_in_clear  &td_out_clear    &kp LG(EQUAL)  &kp LG(MINUS)           &kp LS(Z)     &kp M         &mmv MOVE_UP     &trans         &trans      &trans        &trans     &trans         &kp
-&kp           &kp LA(F)        &kp LA(LG(L))  &kp N                   &kp A         &kp D         &mmv MOVE_DOWN   &kp BACKSPACE  &kp SEMI    &kp SPACE     &kp SQT    &kp RS(MINUS)  &kp RS(EQUAL)
-&kp           &td_bkspace_del  &kp LGUI       &kp LSHIFT              &kp LEFT_ALT  &kp P         &mmv MOVE_LEFT   &kp RG(B)      &kp J       &kp K         &kp L      &kp RS(LBRC)   &kp RS(RBRC)
-&kp           &kp K_UNDO       &kp K_CUT      &ht_mt UP_ARROW K_COPY  &kp K_PASTE   &kp K_REDO    &mmv MOVE_RIGHT  &kp DELETE     &kp PG_UP   &kp UP_ARROW  &kp PG_DN  &trans         &kp
-&kp           &kp LEFT         &kp DOWN       &kp RIGHT               &kp J         &kp SPACE     &mkp LCLK        &kp RIGHT_GUI  &kp RSHIFT  &kp LEFT      &kp DOWN   &kp RIGHT
-            >;
-
-            sensor-bindings = <&scroll_encoder>;
-            label = "RESOLVE";
-        };
-
-        layer_3 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        layer_4 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
         };
     };
 };
