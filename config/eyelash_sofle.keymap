@@ -156,6 +156,31 @@
         flavor = "balanced";
     };
 
+    td_lang_find: td_lang_find {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_LANG_FIND";
+        #binding-cells = <0>;
+        bindings = <&kp LG(SPACE)>, <&kp LC(SPACE)>;
+    };
+
+    td_rgb_hue: td_rgb_hue {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_RGB_HUE";
+        #binding-cells = <0>;
+        bindings =
+            <&rgb_ug RGB_HUI>,
+            <&rgb_ug RGB_HUD>,
+            <&rgb_ug RGB_COLOR_HSB(0,0,100)>,
+            <&rgb_ug RGB_COLOR_HSB(264,93,75)>;
+    };
+
+    td_rgb_br: td_rgb_br {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_RGB_BR";
+        #binding-cells = <0>;
+        bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
+    };
+
     behaviors {
     };
 
@@ -168,7 +193,7 @@
 &ht_rgb_2 RGB_EFF TAB        &kp Q               &kp W               &kp E               &kp R             &kp T                   &kp DOWN_ARROW   &kp Y                       &kp U                       &kp I             &kp O               &kp P               &kp DEL
 &ht_mt CAPSLOCK MINUS        &kp A               &kp S               &kp D               &kp F             &kp G                   &kp LEFT_ARROW   &kp H                       &kp J                       &kp K             &kp L               &kp SEMI            &kp APOS
 &kp LSHFT                    &kp Z               &kp X               &kp C               &kp V             &kp B                   &kp RIGHT_ARROW  &kp N                       &kp M                       &kp COMMA         &kp DOT             &kp FSLH            &kp ENTER
-&kp C_MUTE                   &kp LEFT_GUI        &kp LEFT_ALT        &kp LCTRL           &kp SPACE         &kp LEFT_GUI            &kp ENTER        &kp RIGHT_SHIFT             &kp BACKSPACE               &kp MINUS         &kp RIGHT_ALT       &kp RIGHT_GUI
+&kp C_MUTE                   &td_lang_find       &kp LEFT_ALT        &kp LCTRL           &kp SPACE         &kp LEFT_GUI            &kp ENTER        &kp RIGHT_SHIFT             &kp BACKSPACE               &kp MINUS         &kp RIGHT_ALT       &kp RIGHT_GUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -190,11 +215,11 @@
 
         layer_1 {
             bindings = <
-&trans      &trans      &trans                  &trans             &trans            &trans                  &mmv MOVE_UP     &kp BACKSPACE  &kp N7   &kp N8    &kp N9     &ht_rgb RGB_EFF RGB_TOG  &ht_toggle 1 0
-&trans      &kp HOME    &kp END                 &ht_mt HOME PG_UP  &ht_mt END PG_DN  &ht_mt LA(R) LG(F)      &mmv MOVE_DOWN   &kp ASTERISK   &kp N4   &kp N5    &kp N6     &kp MINUS                &kp LPAR
-&trans      &kp LG(A)   &kp LEFT_ALT            &kp LCMD           &kp LEFT_SHIFT    &ht_mt DEL BACKSPACE    &mmv MOVE_LEFT   &kp SLASH      &kp N1   &kp N2    &kp N3     &kp PLUS                 &kp RPAR
-&trans      &kp K_UNDO  &ht_mt LS(LG(X)) K_CUT  &kp K_COPY         &kp K_PASTE       &kp K_REDO              &mmv MOVE_RIGHT  &kp RGUI       &kp DOT  &kp UP    &kp PRCNT  &kp EQUAL                &kp RETURN
-&kp C_MUTE  &trans      &trans                  &trans             &trans            &mo 0                   &mkp LCLK        &kp SPACE      &kp N0   &kp LEFT  &kp DOWN   &kp RIGHT
+&ht_rgb RGB_EFF RGB_TOG  &td_rgb_hue    &td_rgb_br              &trans                          &kp LG(K)         &trans                  &mmv MOVE_UP     &kp BACKSPACE  &kp N7   &kp N8    &kp N9     &kp DEL    &ht_toggle 1 0
+&kp TAB                  &trans         &trans                  &ht_mt HOME PG_UP               &ht_mt END PG_DN  &ht_mt LA(R) LG(F)      &mmv MOVE_DOWN   &kp ASTERISK   &kp N4   &kp N5    &kp N6     &kp MINUS  &kp LPAR
+&trans                   &kp LG(A)      &kp LEFT_ALT            &kp LCMD                        &kp LEFT_SHIFT    &ht_mt DEL BACKSPACE    &mmv MOVE_LEFT   &kp SLASH      &kp N1   &kp N2    &kp N3     &kp PLUS   &kp RPAR
+&kp EQUAL                &kp K_UNDO     &ht_mt LS(LG(X)) K_CUT  &kp K_COPY                      &kp K_PASTE       &kp K_REDO              &mmv MOVE_RIGHT  &kp RGUI       &kp DOT  &kp UP    &kp PRCNT  &kp EQUAL  &kp RETURN
+&kp C_MUTE               &td_lang_find  &trans                  &ht_mt LA(K_PASTE) LS(K_PASTE)  &kp ENTER         &mo 0                   &mkp LCLK        &kp SPACE      &kp N0   &kp LEFT  &kp DOWN   &kp RIGHT
             >;
 
             display-name = "NUMPAD";
