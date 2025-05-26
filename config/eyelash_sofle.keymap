@@ -78,6 +78,27 @@
         bindings = <&kp O>, <&kp LA(X)>;
     };
 
+    td_select_clear: td_select_clear {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_SELECT_CLEAR";
+        #binding-cells = <0>;
+        bindings = <&kp X>, <&kp RA(X)>;
+    };
+
+    td_select_blade: td_select_blade {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_SELECT_BLADE";
+        #binding-cells = <0>;
+        bindings = <&kp A>, <&kp B>;
+    };
+
+    td_bkspace_del: td_bkspace_del {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_BKSPACE_DEL";
+        #binding-cells = <0>;
+        bindings = <&kp BACKSPACE>, <&kp DELETE>;
+    };
+
     behaviors {
     };
 
@@ -112,11 +133,11 @@
 
         layer_2 {
             bindings = <
-&td_in_clear  &td_out_clear  &kp LG(EQUAL)  &kp LG(MINUS)  &kp LS(Z)     &kp M         &mmv MOVE_UP     &trans         &trans      &trans        &trans     &trans         &kp
-&kp           &kp LA(F)      &kp LA(LG(L))  &kp N          &kp A         &kp D         &mmv MOVE_DOWN   &kp            &kp SEMI    &kp SPACE     &kp SQT    &kp RS(MINUS)  &kp RS(EQUAL)
-&kp           &trans         &kp LGUI       &kp LSHIFT     &kp LEFT_ALT  &kp P         &mmv MOVE_LEFT   &kp            &kp J       &kp K         &kp L      &kp RS(LBRC)   &kp RS(RBRC)
-&kp           &kp K_UNDO     &kp K_CUT      &kp K_COPY     &kp K_PASTE   &kp K_REDO    &mmv MOVE_RIGHT  &kp            &kp PG_UP   &kp UP_ARROW  &kp PG_DN  &trans         &kp
-&kp           &kp LEFT       &kp DOWN       &kp RIGHT      &kp J         &kp SPACE     &mkp LCLK        &kp RIGHT_GUI  &kp RSHIFT  &kp LEFT      &kp DOWN   &kp RIGHT
+&td_in_clear  &td_out_clear    &kp LG(EQUAL)  &kp LG(MINUS)           &kp LS(Z)     &kp M         &mmv MOVE_UP     &trans         &trans      &trans        &trans     &trans         &kp
+&kp           &kp LA(F)        &kp LA(LG(L))  &kp N                   &kp A         &kp D         &mmv MOVE_DOWN   &kp BACKSPACE  &kp SEMI    &kp SPACE     &kp SQT    &kp RS(MINUS)  &kp RS(EQUAL)
+&kp           &td_bkspace_del  &kp LGUI       &kp LSHIFT              &kp LEFT_ALT  &kp P         &mmv MOVE_LEFT   &kp RG(B)      &kp J       &kp K         &kp L      &kp RS(LBRC)   &kp RS(RBRC)
+&kp           &kp K_UNDO       &kp K_CUT      &ht_mt UP_ARROW K_COPY  &kp K_PASTE   &kp K_REDO    &mmv MOVE_RIGHT  &kp DELETE     &kp PG_UP   &kp UP_ARROW  &kp PG_DN  &trans         &kp
+&kp           &kp LEFT         &kp DOWN       &kp RIGHT               &kp J         &kp SPACE     &mkp LCLK        &kp RIGHT_GUI  &kp RSHIFT  &kp LEFT      &kp DOWN   &kp RIGHT
             >;
 
             sensor-bindings = <&scroll_encoder>;
