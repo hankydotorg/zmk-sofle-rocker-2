@@ -5,11 +5,10 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/outputs.h>
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
@@ -27,14 +26,60 @@
     trigger-period-ms = <16>;
 };
 
-
 / {
-
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
         tap-ms = <100>;
+    };
+
+    td_1: td_1 {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_1";
+        #binding-cells = <0>;
+        bindings = <&kp N1>, <&bt BT_SEL 0>;
+    };
+
+    td_2: td_2 {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_2";
+        #binding-cells = <0>;
+        bindings = <&kp N2>, <&bt BT_SEL 1>, <&bt BT_SEL 2>, <&bt BT_NXT>;
+    };
+
+    ht_bt: ht_bt {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HT_BT";
+        bindings = <&bt>, <&kp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        flavor = "balanced";
+    };
+
+    ht_rgb: ht_rgb {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HT_RGB";
+        bindings = <&rgb_ug>, <&kp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        flavor = "balanced";
+    };
+
+    ht_mt: ht_mt {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HT_MT";
+        bindings = <&kp>, <&kp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        flavor = "balanced";
+    };
+
+    behaviors {
     };
 
     keymap {
@@ -42,15 +87,15 @@
 
         layer0 {
             bindings = <
-&kp ESC     &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP_ARROW     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp BACKSPACE
-&kp TAB     &kp Q      &kp W         &kp E         &kp R   &kp T        &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O            &kp P       &kp BSLH
-&kp CAPS    &kp A      &kp S         &kp D         &kp F   &kp G        &kp LEFT_ARROW   &kp H      &kp J      &kp K      &kp L            &kp SEMI    &kp APOS
-&kp LSHFT   &kp Z      &kp X         &kp C         &kp V   &kp B        &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA  &kp DOT          &kp FSLH    &kp ENTER
-&kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
+&ht_rgb RGB_TOG LS(GRAVE)  &ht_bt BT_SEL N1 0  &ht_bt BT_SEL N2 1  &ht_bt BT_SEL N3 2  &ht_bt BT_NXT N4  &ht_bt BT_CLR_ALL N5    &kp UP_ARROW     &ht_mt C_BRIGHTNESS_DEC N6  &ht_mt C_BRIGHTNESS_INC N7  &ht_mt K_MUTE N8  &ht_mt C_VOL_DN N9  &ht_mt C_VOL_UP N0  &tog 1
+&ht_rgb RGB_EFF TAB        &kp Q               &kp W               &kp E               &kp R             &kp T                   &kp DOWN_ARROW   &kp Y                       &kp U                       &kp I             &kp O               &kp P               &kp DEL
+&ht_mt CAPSLOCK MINUS      &kp A               &kp S               &kp D               &kp F             &kp G                   &kp LEFT_ARROW   &kp H                       &kp J                       &kp K             &kp L               &kp SEMI            &kp APOS
+&kp LSHFT                  &kp Z               &kp X               &kp C               &kp V             &kp B                   &kp RIGHT_ARROW  &kp N                       &kp M                       &kp COMMA         &kp DOT             &kp FSLH            &kp ENTER
+&kp C_MUTE                 &kp LEFT_GUI        &kp LEFT_ALT        &kp LCTRL           &kp SPACE         &kp LEFT_GUI            &kp ENTER        &kp RIGHT_SHIFT             &kp BACKSPACE               &kp MINUS         &kp RIGHT_ALT       &kp RIGHT_GUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
-            display-name = "LAYER0";
+            display-name = "QWERTY";
         };
 
         layer_1 {
@@ -79,6 +124,16 @@
         };
 
         layer_3 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        layer_4 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
