@@ -220,7 +220,7 @@
 &td_insert       &kp LA(F)         &kp LA(LG(L))           &kp N                   &td_select_blade  &kp D         &kp DOWN   &kp BACKSPACE           &kp SEMI               &kp SPACE               &kp SQT        &kp RS(MINUS)            &kp RS(EQUAL)
 &td_trim         &td_select_fw_bw  &kp LGUI                &kp LSHIFT              &kp LEFT_ALT      &kp P         &kp J      &kp RG(B)               &kp J                  &kp K                   &kp L          &kp RS(LBRC)             &kp RS(RBRC)
 &td_bkspace_del  &kp K_UNDO        &ht_mt LS(K_CUT) K_CUT  &ht_mt UP_ARROW K_COPY  &td_paste         &kp K_REDO    &kp L      &kp DELETE              &kp PG_UP              &kp UP_ARROW            &kp PG_DN      &ht_mt LA(M) M           &mo 3
-&kp              &kp LEFT          &kp DOWN                &kp RIGHT               &kp J             &kp SPACE     &kp SPACE  &kp RIGHT_GUI           &kp RSHIFT             &kp LEFT                &kp DOWN       &kp RIGHT
+&trans           &kp LEFT          &kp DOWN                &kp RIGHT               &kp J             &kp SPACE     &kp SPACE  &kp RIGHT_GUI           &kp RSHIFT             &kp LEFT                &kp DOWN       &kp RIGHT
             >;
 
             sensor-bindings = <&scroll_encoder>;
