@@ -201,25 +201,25 @@
     keymap {
         compatible = "zmk,keymap";
 
-        layer0 {
+        layer_0 {
+            display-name = "QWERTY";
             bindings = <
-&ht_rgb_2 RGB_TOG LS(GRAVE)  &ht_bt BT_SEL N1 0  &ht_bt BT_SEL N2 1  &ht_bt BT_SEL N3 2  &ht_bt BT_NXT N4  &ht_bt BT_CLR_ALL N5    &kp C_VOL_UP      &ht_mt C_BRIGHTNESS_DEC N6  &ht_mt C_BRIGHTNESS_INC N7  &ht_mt K_MUTE N8  &ht_mt C_VOL_DN N9  &ht_mt C_VOL_UP N0  &ht_toggle 2 1
-&ht_mt CAPS TAB              &kp Q               &kp W               &kp E               &kp R             &kp T                   &kp C_VOL_DN      &kp Y                       &kp U                       &kp I             &kp O               &kp P               &kp DEL
-&kp MINUS                    &kp A               &kp S               &kp D               &kp F             &kp G                   &kp K_PREV        &kp H                       &kp J                       &kp K             &kp L               &td_col_bracket     &td_apos_bracket
-&kp LSHFT                    &kp Z               &kp X               &kp C               &kp V             &kp B                   &kp K_NEXT        &kp N                       &kp M                       &kp COMMA         &kp DOT             &kp FSLH            &kp ENTER
-&kp C_MUTE                   &td_lang_find       &kp LEFT_ALT        &kp LCTRL           &kp SPACE         &kp LEFT_GUI            &kp K_PLAY_PAUSE  &kp RIGHT_SHIFT             &kp BACKSPACE               &kp MINUS         &kp RIGHT_ALT       &kp RIGHT_GUI
+&ht_rgb_2 RGB_TOG LS(GRAVE)  &ht_bt BT_SEL N1 0  &ht_bt BT_SEL N2 1  &ht_bt BT_SEL N3 2  &ht_bt BT_NXT N4  &ht_bt BT_CLR_ALL N5    &kp UP_ARROW  &ht_mt C_BRIGHTNESS_DEC N6  &ht_mt C_BRIGHTNESS_INC N7  &ht_mt K_MUTE N8  &ht_mt C_VOL_DN N9  &ht_mt C_VOL_UP N0  &ht_toggle 2 1
+&ht_mt CAPS TAB              &kp Q               &kp W               &kp E               &kp R             &kp T                   &kp DOWN      &kp Y                       &kp U                       &kp I             &kp O               &kp P               &kp DEL
+&kp MINUS                    &kp A               &kp S               &kp D               &kp F             &kp G                   &kp LEFT      &kp H                       &kp J                       &kp K             &kp L               &td_col_bracket     &td_apos_bracket
+&kp LSHFT                    &kp Z               &kp X               &kp C               &kp V             &kp B                   &kp RIGHT     &kp N                       &kp M                       &kp COMMA         &kp DOT             &kp FSLH            &kp ENTER
+&kp C_MUTE                   &td_lang_find       &kp LEFT_ALT        &kp LCTRL           &kp SPACE         &kp LEFT_GUI            &kp ENTER     &kp RIGHT_SHIFT             &kp BACKSPACE               &kp MINUS         &kp RIGHT_ALT       &kp RIGHT_GUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
-            display-name = "QWERTY";
         };
 
         layer_1 {
             bindings = <
-&td_in_clear     &td_out_clear     &kp LG(EQUAL)           &kp LG(MINUS)           &kp LS(Z)         &kp M         &kp UP     &ht_mt K_MUTE C_VOL_DN  &ht_mt LS(S) C_VOL_UP  &ht_mt LS(Z) LG(MINUS)  &kp RG(EQUAL)  &ht_rgb RGB_EFF RGB_TOG  &ht_toggle 2 0
+&td_in_clear     &td_out_clear     &kp LG(EQUAL)           &kp LG(MINUS)           &kp LS(Z)         &kp M         &kp UP     &ht_mt K_MUTE C_VOL_DN  &ht_mt LS(S) C_VOL_UP  &ht_mt LS(Z) LG(MINUS)  &kp RG(EQUAL)  &ht_rgb RGB_EFF RGB_TOG  &ht_toggle 2 3
 &td_insert       &kp LA(F)         &kp LA(LG(L))           &kp N                   &td_select_blade  &kp D         &kp DOWN   &kp BACKSPACE           &kp SEMI               &kp SPACE               &kp SQT        &kp RS(MINUS)            &kp RS(EQUAL)
 &td_trim         &td_select_fw_bw  &kp LGUI                &kp LSHIFT              &kp LEFT_ALT      &kp P         &kp J      &kp RG(B)               &kp J                  &kp K                   &kp L          &kp RS(LBRC)             &kp RS(RBRC)
-&td_bkspace_del  &kp K_UNDO        &ht_mt LS(K_CUT) K_CUT  &ht_mt UP_ARROW K_COPY  &td_paste         &kp K_REDO    &kp L      &kp DELETE              &kp PG_UP              &kp UP_ARROW            &kp PG_DN      &ht_mt LA(M) M           &mo 0
+&td_bkspace_del  &kp K_UNDO        &ht_mt LS(K_CUT) K_CUT  &ht_mt UP_ARROW K_COPY  &td_paste         &kp K_REDO    &kp L      &kp DELETE              &kp PG_UP              &kp UP_ARROW            &kp PG_DN      &ht_mt LA(M) M           &mo 3
 &kp              &kp LEFT          &kp DOWN                &kp RIGHT               &kp J             &kp SPACE     &kp SPACE  &kp RIGHT_GUI           &kp RSHIFT             &kp LEFT                &kp DOWN       &kp RIGHT
             >;
 
@@ -229,15 +229,28 @@
 
         layer_2 {
             bindings = <
-&ht_rgb RGB_EFF RGB_TOG  &td_rgb_hue    &td_rgb_br              &kp K_PREV                      &kp LG(K_PLAY_PAUSE)  &kp K_NEXT              &mmv MOVE_UP     &kp BACKSPACE  &kp N7   &kp N8    &kp N9     &kp DEL    &ht_toggle 1 0
-&kp TAB                  &kp LG(K)      &kp LG(N1)              &ht_mt HOME PG_UP               &ht_mt END PG_DN      &ht_mt LA(R) LG(F)      &mmv MOVE_DOWN   &kp ASTERISK   &kp N4   &kp N5    &kp N6     &kp MINUS  &kp LPAR
-&kp C_AC_SAVE            &kp LG(A)      &kp LEFT_ALT            &kp LCMD                        &kp LEFT_SHIFT        &ht_mt DEL BACKSPACE    &mmv MOVE_LEFT   &kp SLASH      &kp N1   &kp N2    &kp N3     &kp PLUS   &kp RPAR
-&kp EQUAL                &kp K_UNDO     &ht_mt LS(LG(X)) K_CUT  &kp K_COPY                      &kp K_PASTE           &kp K_REDO              &mmv MOVE_RIGHT  &kp RGUI       &kp DOT  &kp UP    &kp PRCNT  &kp EQUAL  &kp RETURN
-&kp C_MUTE               &td_lang_find  &trans                  &ht_mt LA(K_PASTE) LS(K_PASTE)  &kp ENTER             &mo 0                   &mkp LCLK        &kp SPACE      &kp N0   &kp LEFT  &kp DOWN   &kp RIGHT
+&ht_rgb RGB_EFF RGB_TOG  &td_rgb_hue    &td_rgb_br              &kp K_PREV                      &kp LG(K_PLAY_PAUSE)  &kp K_NEXT              &kp UP     &kp BACKSPACE  &kp N7   &kp N8    &kp N9     &kp DEL    &ht_toggle 1 3
+&kp TAB                  &kp LG(K)      &kp LG(N1)              &ht_mt HOME PG_UP               &ht_mt END PG_DN      &ht_mt LA(R) LG(F)      &kp DOWN   &kp ASTERISK   &kp N4   &kp N5    &kp N6     &kp MINUS  &kp LPAR
+&kp C_AC_SAVE            &kp LG(A)      &kp LEFT_ALT            &kp LCMD                        &kp LEFT_SHIFT        &ht_mt DEL BACKSPACE    &kp LEFT   &kp SLASH      &kp N1   &kp N2    &kp N3     &kp PLUS   &kp RPAR
+&kp EQUAL                &kp K_UNDO     &ht_mt LS(LG(X)) K_CUT  &kp K_COPY                      &kp K_PASTE           &kp K_REDO              &kp RIGHT  &kp RGUI       &kp DOT  &kp UP    &kp PRCNT  &kp EQUAL  &kp RETURN
+&kp C_MUTE               &td_lang_find  &trans                  &ht_mt LA(K_PASTE) LS(K_PASTE)  &kp ENTER             &mo 3                   &kp ENTER  &kp SPACE      &kp N0   &kp LEFT  &kp DOWN   &kp RIGHT
             >;
 
             display-name = "NUMPAD";
             sensor-bindings = <&scroll_encoder>;
+        };
+
+        layer_3 {
+            bindings = <
+&ht_rgb_2 RGB_TOG LS(GRAVE)  &ht_bt BT_SEL N1 0  &ht_bt BT_SEL N2 1  &ht_bt BT_SEL N3 2  &ht_bt BT_NXT N4  &ht_bt BT_CLR_ALL N5    &kp C_VOL_UP      &ht_mt C_BRIGHTNESS_DEC N6  &ht_mt C_BRIGHTNESS_INC N7  &ht_mt K_MUTE N8  &ht_mt C_VOL_DN N9  &ht_mt C_VOL_UP N0  &ht_toggle 2 1
+&ht_mt CAPS TAB              &kp Q               &kp W               &kp E               &kp R             &kp T                   &kp C_VOL_DN      &kp Y                       &kp U                       &kp I             &kp O               &kp P               &kp DEL
+&kp MINUS                    &kp A               &kp S               &kp D               &kp F             &kp G                   &kp K_PREV        &kp H                       &kp J                       &kp K             &kp L               &td_col_bracket     &td_apos_bracket
+&kp LSHFT                    &kp Z               &kp X               &kp C               &kp V             &kp B                   &kp K_NEXT        &kp N                       &kp M                       &kp COMMA         &kp DOT             &kp FSLH            &kp ENTER
+&kp C_MUTE                   &td_lang_find       &kp LEFT_ALT        &kp LCTRL           &kp SPACE         &kp LEFT_GUI            &kp K_PLAY_PAUSE  &kp RIGHT_SHIFT             &kp BACKSPACE               &kp MINUS         &kp RIGHT_ALT       &kp RIGHT_GUI
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
+            display-name = "WRITER";
         };
     };
 };
